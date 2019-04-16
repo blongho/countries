@@ -15,12 +15,6 @@ I also need this in building the library at
     Get as described in
     https://stackoverflow.com/questions/19957194/install-beautiful-soup-using-pip?answertab=votes#tab-top
 
-- cURL
-    Get it from https://curl.haxx.se/download.html
-
-- Basics of HTML5 && CSS3
-    https://www.w3schools.com/html/default.asp
-    https://www.w3schools.com/css/default.asp
 """
 import os
 from bs4 import BeautifulSoup
