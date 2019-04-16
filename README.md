@@ -14,9 +14,6 @@ This script downloads and extracts the country information and saves them in a j
     - Get it with `python pip install beautifulsoup4`
     - For system-specific installs, check this [this stackoverflow answer](https://stackoverflow.com/questions/19957194/install-beautiful-soup-using-pip?answertab=votes#tab-top)
 
-4. cURL
-    Get it from [cURL websit](https://curl.haxx.se/download.html)
-
 
 ## Usage
 1. Get your own copy by [forking the repository](https://github.com/blongho/countries/fork)
@@ -51,7 +48,7 @@ Sample data from `countries.json`
         "population": "4,975,593",
         "continent": "AS"
     },
-    ...
+    //...
 ]
 ```
 

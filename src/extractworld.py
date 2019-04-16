@@ -25,11 +25,11 @@ I also need this in building the library at
 import os
 from bs4 import BeautifulSoup
 from datetime import datetime
+import urllib.request as requests
 from src.country import Country
 # ============================================================================
 # ============================================================================
 #   Default variables
-tmpFile = "data.html"  # The downloaded data will be saved here (by default)
 
 # Directory listing all the countries of the world
 directory = "https://www.geonames.org/countries/"
@@ -39,54 +39,35 @@ fileName = "countries.json"  # Default file name
 # ============================================================================
 
 
-def download(link=directory, doc=tmpFile):
+def download(url=directory):
     """
-    Download information from link and save to doc.
+    Download information from url and return the raw file as string.
 
     @param link The url containing country data
     @param doc  The file where the download will be saved
 
     @pre  cURL must be installed in the system
     """
-    print("\n\n==>> Downloading files from {}".format(directory))
+    print("\n\n==>> Downloading files from {}".format(url))
 
-    os.system("curl -ss {} -o {}".format(link, doc))
+    document = requests.urlopen(url).read().decode("utf8")
 
     print("==>> Download completed :)")
-
-# ============================================================================
-
-
-def readContents(doc=tmpFile):
-    """
-    Read the contents from the doc as text.
-
-    @param doc The downloaded file
-    """
-
-    content = None
-
-    with open(doc, "r") as fd:
-        content = fd.read()
-
-    # Delete the downloaded file
-    os.system("rm {}".format(tmpFile))
-    return content
-
+    return document
 
 # ============================================================================
 # Get the data
 
 
-def extractInfo(doc=tmpFile):
+def extractInfo(websiteContent):
     """
-    Extract the information from the site.
+    Extract the information from the downloaded site.
 
     @param doc The document {string} read from the downloaded file
     """
     print("==>> Extracting data data...")
 
-    soup = BeautifulSoup(readContents(doc), 'html.parser')
+    soup = BeautifulSoup(websiteContent, 'html.parser')
     table = soup.find("table", attrs={"id": "countries"})
 
     trList = table.find_all("tr")
@@ -122,7 +103,7 @@ def extractInfo(doc=tmpFile):
 
 def showExtractedInfo(countryList):
     """
-    Display the extracted information.
+    Display the extracted information to the user .
 
     @param  countryList The list of the countries extracted
     """
@@ -185,8 +166,8 @@ def run():
     """
     clearScreen()
     startTime = datetime.now().second
-    download()
-    countryList = extractInfo()
+    stringContent = download()
+    countryList = extractInfo(stringContent)
     saveToJson(countryList)
     endTime = datetime.now().second
     showextract = input("Do you want to see the extracted data? (y/n): ")
