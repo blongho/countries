@@ -15,18 +15,18 @@ import json
 
 class Country:
     """
-    A country object to represent the iso2, iso3, numeric code, name, 
+    A country object to represent the alpha2, alpha3, numeric code, name, 
     population and continent.
 
     """
 
-    def __init__(self, id, iso2, iso3, name, capital, area, population, continent):
+    def __init__(self, alpha2, alpha3, code, name, capital, area, population, continent):
         """
         The constructor for creating a new object
         """
-        self.id = id
-        self.alpha2 = iso2
-        self.alpha3 = iso3
+        self.alpha2 = alpha2
+        self.alpha3 = alpha3
+        self.code = code
         self.name = name
         self.capital = capital
         self.area = area
@@ -37,7 +37,7 @@ class Country:
         """ 
         String representation of the class
         """
-        return "{} [name={} capital={} code={} alpha2={} alpha3={} population={} continent={}]".format(__class__.__name__, self.name, self.capital, self.id, self.alpha2, self.alpha3, self.population, self.continent)
+        return "{} [name={} capital={} population={} code={} alpha2={} alpha3={} area={} continent={}]".format(__class__.__name__, self.name, self.capital, self.population, self.code, self.alpha2, self.alpha3, self.area, self.continent)
 
     def display(self):
         """
@@ -51,4 +51,4 @@ class Country:
         inspired by 
         @see https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable/15538391#15538391
         """
-        return json.dumps(self, default=vars, sort_keys=False, indent=4)
+        return json.dumps(self, default=vars, sort_keys=True, indent=4)

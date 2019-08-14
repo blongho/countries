@@ -58,6 +58,9 @@ def extractInfo(websiteContent):
     Extract the information from the downloaded site.
 
     @param doc The document {string} read from the downloaded file
+
+    <tr><th>ISO-3166<br>alpha2</th><th>ISO-3166<br>alpha3</th><th>ISO-3166<br>numeric</th><th>fips</th><th>Country</th><th>Capital</th><th>Area in km&sup2;</th><th>Population</th><th>Continent</th></tr>
+<tr><td><a name="AD"></a>AD</td><td>AND</td><td>020</td><td>AN</td><td><a href="/countries/AD/andorra.html">Andorra</a></td><td>Andorra la Vella</td><td class="rightalign">468.0</td><td class="rightalign">84,000</td><td>EU</td></tr>
     """
     print("==>> Extracting data data...")
 
@@ -65,7 +68,10 @@ def extractInfo(websiteContent):
     table = soup.find("table", attrs={"id": "countries"})
 
     trList = table.find_all("tr")
-    iso2 = iso3 = code = name = capital = area = pop = continent = None
+    iso2 = iso3 = capital = continent = name = ""
+    area = pop = 0.0
+    code = 0
+
     countries = []  # Container to hold all the countries
 
     for tr in trList:
@@ -74,19 +80,18 @@ def extractInfo(websiteContent):
             iso2 = td[0].find(text=True)
             iso3 = td[1].find(text=True)
             code = td[2].find(text=True)
-            name = td[4].find(text=True)
+            name= td[4].find(text=True)
             capital = td[5].find(text=True)
             area = td[6].find(text=True)
             pop = td[7].find(text=True)
             continent = td[8].find(text=True)
 
-        country = Country(code, iso2, iso3, name,
-                          capital, area, pop, continent)
+        country = Country(iso2, iso3, code, name, capital, area, pop, continent)
 
         # Save full continent name
-        # c = Country(code, iso2, iso3, name, capital, area, pop, continent)
+        # c = Country(iso2, iso3, code, name, capital, area, pop, continent)
 
-        if country.name is not None:  # Resist storing the table headers (th)
+        if country.alpha2:  # Resist storing the table headers (th)
             countries.append(country)
 
     print("==>> Data extraction complete :)")
