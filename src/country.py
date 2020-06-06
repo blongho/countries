@@ -20,13 +20,13 @@ class Country:
 
     """
 
-    def __init__(self, alpha2, alpha3, code, name, capital, area, population, continent):
+    def __init__(self, alpha2, alpha3, id, name, capital, area, population, continent):
         """
         The constructor for creating a new object
         """
         self.alpha2 = alpha2
         self.alpha3 = alpha3
-        self.code = code
+        self.id = id
         self.name = name
         self.capital = capital
         self.area = area
@@ -37,7 +37,7 @@ class Country:
         """ 
         String representation of the class
         """
-        return "{} [name={} capital={} population={} code={} alpha2={} alpha3={} area={} continent={}]".format(__class__.__name__, self.name, self.capital, self.population, self.code, self.alpha2, self.alpha3, self.area, self.continent)
+        return "{} [name={} capital={} population={} id={} alpha2={} alpha3={} area={} continent={}]".format(__class__.__name__, self.name, self.capital, self.population, self.id, self.alpha2, self.alpha3, self.area, self.continent)
 
     def display(self):
         """
