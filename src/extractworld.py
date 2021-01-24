@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import urllib.request as requests
 from src.country import Country
+
 # ============================================================================
 # ============================================================================
 #   Default variables
@@ -29,6 +30,7 @@ from src.country import Country
 directory = "https://www.geonames.org/countries/"
 
 fileName = "countries.json"  # Default file name
+
 
 # ============================================================================
 
@@ -48,6 +50,7 @@ def download(url=directory):
 
     print("==>> Download completed :)")
     return document
+
 
 # ============================================================================
 # Get the data
@@ -80,13 +83,13 @@ def extractInfo(websiteContent):
             iso2 = td[0].find(text=True)
             iso3 = td[1].find(text=True)
             code = td[2].find(text=True)
-            name= td[4].find(text=True)
+            name = td[4].find(text=True)
             capital = td[5].find(text=True)
-            area = td[6].find(text=True)
-            pop = td[7].find(text=True)
+            area = str(td[6].find(text=True)).replace(',', '')
+            pop = str(td[7].find(text=True)).replace(',', '')
             continent = td[8].find(text=True)
 
-        country = Country(iso2, iso3, code, name, capital, area, pop, continent)
+        country = Country(iso2, iso3, int(code), name, capital, float(area), int(pop), continent)
 
         # Save full continent name
         # c = Country(iso2, iso3, code, name, capital, area, pop, continent)
@@ -96,6 +99,7 @@ def extractInfo(websiteContent):
 
     print("==>> Data extraction complete :)")
     return countries
+
 
 # ============================================================================
 
@@ -126,6 +130,8 @@ def showExtractedInfo(countryList):
                 break
 
     print("\n")
+
+
 # ============================================================================
 
 
@@ -155,6 +161,7 @@ def saveToJson(countryList, filename=fileName):
     print("\n***********************\nCountries saved in ", end="")
     print(" {}\n*********************\n".format(filename))
 
+
 # ============================================================================
 
 
@@ -178,6 +185,8 @@ def run():
     total = round((endTime - startTime), 2)
     print("\nTotal time (download, extraction and saving to file): ", end="")
     print("{} seconds\n".format(total))
+
+
 # ============================================================================
 
 
