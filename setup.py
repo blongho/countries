@@ -1,0 +1,30 @@
+from distutils.core import setup
+setup(
+  name = 'worldCountries',
+  packages = ['worldCountries'],
+  version = '0.1',
+  license='GPL-3.0 License',
+  description = 'Get the up-to-date data about countries of the world as presented in https://www.geonames.org/countries/',
+  author = 'Bernard Che Longho',
+  author_email = 'blongho02@gmail.com',
+  url = 'https://github.com/blongho/countries',
+  download_url = 'https://github.com/blongho/countries/archive/v_01.tar.gz',
+  keywords = ['countries', 'capital', 'ISO 3166 alpha2', 'ISO 3166 alpha3'],
+  install_requires=[
+          'validators',
+          'beautifulsoup4',
+      ],
+  classifiers=[
+    'Development Status :: 5 - Alpha',
+    'Intended Audience :: Developers',
+    'Topic :: Software Development :: Build Tools',
+    'License :: OSI Approved :: GPL-3.0 License',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+  ],
+)

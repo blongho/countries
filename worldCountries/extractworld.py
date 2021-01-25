@@ -113,23 +113,23 @@ def showExtractedInfo(countryList):
     # Sort by continent
     clearScreen()
     countryList.sort(key=lambda c: c.name, reverse=False)
-    showInterval = 50
-    print("\nYou will see {} items at a time\n".format(showInterval))
-
-    idx = 1
-    for c in countryList:
-        print(str(idx) + ": ", end="")
-        c.display()
-        idx += 1
-        if (idx % (showInterval + 1) == 0):
-            proceed = input("\n==>Show more? (y/n): ")
-            if (proceed[0].lower() == "y"):
-                clearScreen()
-                continue
-            else:
-                break
-
-    print("\n")
+    # showInterval = 50
+    # print("\nYou will see {} items at a time\n".format(showInterval))
+    #
+    # idx = 1
+    # for c in countryList:
+    #     print(str(idx) + ": ", end="")
+    #     c.display()
+    #     idx += 1
+    #     if (idx % (showInterval + 1) == 0):
+    #         proceed = input("\n==>Show more? (y/n): ")
+    #         if (proceed[0].lower() == "y"):
+    #             clearScreen()
+    #             continue
+    #         else:
+    #             break
+    #
+    # print("\n")
 
 
 # ============================================================================
@@ -176,11 +176,11 @@ def run():
     countryList = extractInfo(stringContent)
     saveToJson(countryList)
     endTime = datetime.now().second
-    showextract = input("Do you want to see the extracted data? (y/n): ")
-    if (showextract[0].lower() == "y"):
-        showExtractedInfo(countryList)
-    else:
-        pass
+    # showextract = input("Do you want to see the extracted data? (y/n): ")
+    # if (showextract[0].lower() == "y"):
+    #     showExtractedInfo(countryList)
+    # else:
+    #     pass
 
     total = round((endTime - startTime), 2)
     print("\nTotal time (download, extraction and saving to file): ", end="")
