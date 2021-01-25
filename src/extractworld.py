@@ -79,7 +79,7 @@ def extractInfo(websiteContent):
 
     for tr in trList:
         td = tr.find_all("td")
-        for idx in td:
+        for _ in td:
             iso2 = td[0].find(text=True)
             iso3 = td[1].find(text=True)
             code = td[2].find(text=True)
@@ -89,7 +89,7 @@ def extractInfo(websiteContent):
             pop = str(td[7].find(text=True)).replace(',', '')
             continent = td[8].find(text=True)
 
-        country = Country(iso2, iso3, int(code), name, capital, float(area), int(pop), continent)
+        country = Country(int(code),iso2, iso3,  name, capital, float(area), int(pop), continent)
 
         # Save full continent name
         # c = Country(iso2, iso3, code, name, capital, area, pop, continent)
