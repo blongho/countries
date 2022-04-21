@@ -37,6 +37,7 @@ Sample data from `countries.json`
         "area": "468.0",
         "population": "84,000",
         "continent": "EU"
+        "languages": "Catalan (ca)"
     },
     {
         "id": "784",
@@ -47,6 +48,7 @@ Sample data from `countries.json`
         "area": "82,880.0",
         "population": "4,975,593",
         "continent": "AS"
+        "languages": "Arabic (ar-AE), Persian (fa), English (en), Hindi (hi), Urdu (ur)"
     },
     //...
 ]
