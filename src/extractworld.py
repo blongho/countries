@@ -38,8 +38,7 @@ def download(url=directory):
     Download information from url and return the raw file as string.
 
     @param link The url containing country data
-    @param doc  The file where the download will be saved
-
+    
     @pre  cURL must be installed in the system
     """
     print("\n\n==>> Downloading files from {}".format(url))
@@ -58,7 +57,9 @@ def extractLanguagesFromCountry(href):
     table = document.find_all("table")[1]
     languages_row = table.find_all("tr")[7]
     languages_data_cell = languages_row.find_all("td")[1]
-    return str(languages_data_cell)[4:-5].strip()
+    langs = str(languages_data_cell)[4:-5].strip()
+    #print(langs.split(','))
+    return str(languages_data_cell)[4:-5].strip().split(",")
 
 
 # ============================================================================
@@ -98,15 +99,15 @@ def extractInfo(websiteContent):
         languages = extractLanguagesFromCountry(hrefToCountry)
 
         country = Country(
-            iso2,
-            iso3,
-            int(code),
-            name,
-            capital,
-            float(area),
-            int(pop),
-            continent,
-            languages,
+            alpha2=iso2,
+            alpha3=iso3,
+            id=int(code),
+            name=name,
+            capital=capital,
+            area=float(area),
+            population=int(pop),
+            continent=continent,
+            languages = [str(language).strip() for language in languages],
         )
 
         # Save full continent name
