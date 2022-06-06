@@ -28,35 +28,42 @@ That's it! You now have a file called `countries.json`. Open it in your favourit
 Sample data from `countries.json`
 ```json 
 [
-    {
-        "id": "020",
-        "alpha2": "AD",
-        "alpha3": "AND",
-        "name": "Andorra",
-        "capital": "Andorra la Vella",
-        "area": "468.0",
-        "population": "84,000",
-        "continent": "EU"
-        "languages": "Catalan (ca)"
-    },
-    {
-        "id": "784",
-        "alpha2": "AE",
-        "alpha3": "ARE",
-        "name": "United Arab Emirates",
-        "capital": "Abu Dhabi",
-        "area": "82,880.0",
-        "population": "4,975,593",
-        "continent": "AS"
-        "languages": "Arabic (ar-AE), Persian (fa), English (en), Hindi (hi), Urdu (ur)"
-    },
+   {
+    "alpha2": "AD",
+    "alpha3": "AND",
+    "area": 468.0,
+    "capital": "Andorra la Vella",
+    "continent": "EU",
+    "id": 20,
+    "languages": [
+        "Catalan (ca)"
+    ],
+    "name": "Andorra",
+    "population": 77006
+},
+{
+    "alpha2": "AE",
+    "alpha3": "ARE",
+    "area": 82880.0,
+    "capital": "Abu Dhabi",
+    "continent": "AS",
+    "id": 784,
+    "languages": [
+        "Arabic (ar-AE)",
+        "Persian (fa)",
+        "English (en)",
+        "Hindi (hi)",
+        "Urdu (ur)"
+    ],
+    "name": "United Arab Emirates",
+    "population": 9630959
     //...
 ]
 ```
 
 This has been tested on Windows 10 with cygwin installed and used as the terminal.
 
-It works too in Ubuntu 18.04 
+It works too in Ubuntu 18.04 and Mac OS
 
 If this does not work for your system for any reason, please feel free to [create an issue](https://github.com/blongho/countries/issues) 
 
