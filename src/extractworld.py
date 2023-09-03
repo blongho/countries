@@ -29,7 +29,7 @@ from src.country import Country
 # Directory listing all the countries of the world
 directory = "https://www.geonames.org/countries/"
 
-fileName = "countries.json"  # Default file name
+fileName = "countries_origin.json"  # Default file name
 
 
 # ============================================================================
@@ -87,16 +87,15 @@ def extractInfo(websiteContent):
 
     for tr in trList[1:]:
         td = tr.find_all("td")
-        iso2 = td[0].find(text=True)
-        iso3 = td[1].find(text=True)
-        code = td[2].find(text=True)
-        name = td[4].find(text=True)
-        capital = td[5].find(text=True)
-        area = str(td[6].find(text=True)).replace(",", "")
-        pop = str(td[7].find(text=True)).replace(",", "")
-        continent = td[8].find(text=True)
-        hrefToCountry = td[4].find("a")["href"][11:]
-        languages = extractLanguagesFromCountry(hrefToCountry)
+        for _ in td:
+            iso2 = td[0].find(text=True)
+            iso3 = td[1].find(text=True)
+            code = td[2].find(text=True)
+            name = td[4].find(text=True)
+            capital = td[5].find(text=True)
+            area = str(td[6].find(text=True)).replace(',', '')
+            pop = str(td[7].find(text=True)).replace(',', '')
+            continent = td[8].find(text=True)
 
         country = Country(
             alpha2=iso2,
@@ -164,7 +163,8 @@ def saveToJson(countryList, filename=fileName):
     """
     idx = 0
     countries = len(countryList)
-    with open(fileName, "w") as outfile:
+    print("Saving {} countries into {}".format(len(countryList), filename))
+    with open(filename, 'w') as outfile:
         outfile.write("[")  # open array
         for c in countryList:
             outfile.write(c.toJson())

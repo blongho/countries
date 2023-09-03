@@ -14,6 +14,12 @@ This script downloads and extracts the country information and saves them in a j
     - Get it with `python pip install beautifulsoup4`
     - For system-specific installs, check this [this stackoverflow answer](https://stackoverflow.com/questions/19957194/install-beautiful-soup-using-pip?answertab=votes#tab-top)
 
+4. Install the virtualenv (if not already installed)
+`python3 -m pip install --user virtualenv`
+
+5. Create an env for dev and activate it
+`python3 -m venv countries-env source countries-env/bin/activate`
+
 
 ## Usage
 1. Get your own copy by [forking the repository](https://github.com/blongho/countries/fork)
