@@ -59,6 +59,7 @@ for c in countries.itertuples(index=False, name='Country'):
     for lang in str(c.languages).split(","):
         if get_full_language_name(lang) != '':
             country_languages.append("{} ({})".format(get_full_language_name(lang), lang))
+   
     country_list.append(
         Country(alpha2=c.alpha2,
                 alpha3=c.alpha3,

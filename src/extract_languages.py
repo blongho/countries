@@ -673,7 +673,7 @@ def get_languages()->list:
         if data[0] != "Country" and data[0] != "World":
             language = Language(country=data[0], language=data[1], iso2=data[2], iso3=data[3], id=data[4])
             languages.append(language)
-            print(language)
+            #print(language)
     return languages
 
 
