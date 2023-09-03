@@ -116,4 +116,4 @@ Please give it a star if you like it or [create and issue](https://github.com/bl
 GNU General Public Licence 
 See [LICENSE](LICENSE) and as specified in [Geonames Terms and Conditions](https://www.geonames.org/export/)
 
-&copy;March 2019 [Bernard Che Longho](mailto:blongho02@gmail.com)
+&copy;March 2019 - 2023 [Bernard Che Longho](mailto:blongho02@gmail.com)
